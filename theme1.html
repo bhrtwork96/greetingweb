@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        #theme1 {
+            background-image: url('assets/images/theme1.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 120vh;
+            margin: auto;
+            border: 1px solid white;
+            padding: 10px;
+        }
+
+        .wish-text {
+            width: 100%;
+            padding: 10px;
+            background-color: transparent;
+            border: 1px dashed yellow;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            min-height: 120px;
+            margin-top: 65vh;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .name {
+            width: 30%;
+            margin-top: 10vh;
+            font-size: 1rem;
+            padding: 5px;
+            background-color: transparent;
+            border: 1px dashed yellow;
+            color: white;
+            font-family: 'Pacifico';
+            text-align: center;
+        }
+
+        .name:hover {
+            outline: none;
+        }
+
+        .share-btn {
+            width: 100px;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            background-color: #007BFF;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .wish-text-output {
+            width: 100%;
+            padding: 10px;
+            background-color: transparent;
+            /* border: 1px dashed yellow; */
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            min-height: 120px;
+            margin-top: 65vh;
+            box-sizing: border-box;
+            overflow: hidden;
+            margin-bottom: 10vh;
+        }
+
+        .name-output {
+            width: 30%;
+            font-size: 1rem;
+            padding: 5px;
+            margin: auto;
+            background-color: transparent;
+            color: white;
+            font-family: 'Pacifico';
+        }
+    </style>
+    <title>Greating card - Makar Sankrati</title>
+</head>
+
+<body>
+
+    <div id="theme1">
+        <textarea class="wish-text" name=""
+            id="wishes"> सूरज की किरणों से चमक उठे आपका जीवन, मकर संक्रांति पर आये आपके जीवन में खुशियां। मकर संक्रांति की हार्दिक शुभकामनाएं।</textarea>
+        <input type="text" id="name" class="name" placeholder="Your name">
+    </div>
+    <div id="action-btn">
+        <button class="share-btn" id="next-btn">Next</button>
+    </div>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('#next-btn').click(() => {
+                let wishes = $('#wishes').val();
+                let name = $('#name').val();
+                $('#theme1').html(` <p class="wish-text-output" name="" id="wishes">${wishes} </p>
+        <span class="name-output">${name}</span>`);
+                $('#action-btn').html(`<button class="share-btn" onclick="shareCard()">Share</button>`)
+            })
+
+        })
+
+        async function shareCard() {
+            try {
+                const themeDiv = document.getElementById('theme1');
+                const canvas = await html2canvas(themeDiv);
+                const dataUrl = canvas.toDataURL('image/png');
+
+                const blob = await (await fetch(dataUrl)).blob();
+                const filesArray = [
+                    new File([blob], 'theme-snapshot.png', {
+                        type: blob.type,
+                    })
+                ];
+
+                await navigator.share({
+                    title: 'Greeting Card Theme',
+                    text: 'Check out this amazing greeting card theme!',
+                    files: filesArray,
+                });
+                console.log('Content shared successfully');
+            } catch (error) {
+                console.error('Error sharing content:', error);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

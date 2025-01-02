@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Rozha+One&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+h4 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+h5 {
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+h6 {
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: "Lato", serif;
+    text-align: center;
+    background-color: rgb(243, 143, 160);
+}
+
+.container {
+    margin-top: 50px;
+    position: relative;
+}
+
+.intro {
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007BFF;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.image {
+    position: absolute;
+    top: 5;
+    left: 0;
+    z-index: -1;
+    rotate: -30deg;
+    /* width: 100%;
+    height: 200px;
+    margin-top: 20px; */
+    animation: move 5s infinite alternate;
+}
+
+@keyframes move {
+    from {
+        transform: translateY(100px);
+    }
+
+    to {
+        transform: translateY(-100px);
+    }
+}
+
+
+/* themes page css */
+
+.header {
+    display: flex;
+}
+
+.thems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    border: 3px solid green;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card h1 {
+    font-size: 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: right;
+    padding: 5px;
+}
+
+.header .share-icon {
+    color: blue;
+    cursor: pointer;
+    font-size: 1.7rem;
+    padding: 20px;
+}
+
+/* theme1 css */
+
+
+@media (min-width: 500px) {
+
+    .container{
+        width: 400px;
+        margin: auto;
+    }
+    #theme1{
+        width: 400px;
+        margin: auto;
+    }
+    .theme-container{
+        width: 400px;
+        margin: auto;
+    }
+   
+}

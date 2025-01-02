@@ -10,8 +10,8 @@
             background-image: url('assets/images/theme2.png');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: contain;
-            height: 350px;
+            background-size: cover;
+            height: 49vh;
             margin: auto;
             border: 1px solid white;
             padding: 10px;
@@ -24,7 +24,7 @@
             font-size: 1.2rem;
             text-align: center;
             min-height: 100px;
-            margin-top: 27vh;
+            margin-top: 191px;
             box-sizing: border-box;
             overflow: hidden;
             background-color: #C4E5DC;
@@ -33,7 +33,7 @@
 
         .name {
             width: 30%;
-            margin-top: 2vh;
+            margin-top: -1px;
             font-size: 1rem;
             padding: 5px;
             background-color: yellow;
@@ -65,7 +65,7 @@
             font-size: 1.2rem;
             text-align: center;
             min-height: 80px;
-            margin-top: 26vh;
+            margin-top: 177px;
             box-sizing: border-box;
             overflow: hidden;
             background-color: rgba(182, 204, 198, 0.8);
@@ -81,7 +81,7 @@
             color: blue;
             font-family: 'Pacifico';
             border-radius: 10px;
-            margin: 2vh auto;
+            margin: -5px auto;
             
         }
     </style>
@@ -107,7 +107,8 @@
             $('#next-btn').click(() => {
                 let wishes = $('#wishes').val();
                 let name = $('#name').val();
-                $('#theme1').html(` <h3 class="name-output">${name}</h3><p class="wish-text-output" name="" id="wishes">${wishes} </p>`);
+                $('#theme1').html(` <h3 class="name-output">${name}</h3>
+                                    <p class="wish-text-output" name="" id="wishes">${wishes} </p>`);
                 $('#action-btn').html(`<button class="share-btn" onclick="shareCard()">Share</button>`)
             })
 

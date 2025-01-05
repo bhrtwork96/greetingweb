@@ -158,7 +158,7 @@ body {
 @media (min-width: 500px) {
 
     .container{
-        width: 400px;
+        width: 500px;
         margin: auto;
     }
     #theme1{
@@ -166,7 +166,7 @@ body {
         margin: auto;
     }
     .theme-container{
-        width: 400px;
+        width: 500px;
         margin: auto;
     }
    

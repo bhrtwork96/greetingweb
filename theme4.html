@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        #theme1 {
+            background-image: url('assets/images/theme4.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 49vh;
+            margin: auto;
+            border: 1px solid red;
+            padding: 10px;
+            position: relative;
+            /* width:100%; */
+            
+        }
+
+        /* .wish-text {
+            width:62%;
+            position: absolute;
+            top:175px;
+            right:10px;
+            min-height: 100px;
+            padding: 10px;
+            border: 3px dashed red;
+            font-size: 1rem;
+            text-align: center;
+            box-sizing: border-box;
+            overflow: hidden;
+            box-sizing: border-box;
+            
+        } */
+
+        .name {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right:0;
+            font-size: 0.9rem;
+            padding: 5px;
+            background-color: transparent;
+            border: 3px dashed white;
+            color: white;
+            /* font-family: 'Pacifico'; */
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .name:hover {
+            outline: none;
+            
+        }
+        .name:active{
+            background-color: transparent;
+        }
+
+        .share-btn {
+            width: 100px;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            background-color: #007BFF;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        /* .wish-text-output {
+            width: 62%;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+            min-height: 100px;
+            box-sizing: border-box;
+            overflow: hidden;
+            color: red;
+            position: absolute;
+            bottom: 20px;
+            right:10px;
+           
+        } */
+
+        .name-output {
+            width: 100%;
+            position: absolute;
+            top: 3px;
+            right:0;
+            font-size: 0.9rem;
+            padding: 5px;
+            background-color: transparent;
+            color: white;
+            /* font-family: 'Pacifico'; */
+            text-align: center;
+            box-sizing: border-box;
+
+        }
+    </style>
+    <title>Greating card - Makar Sankrati</title>
+</head>
+
+<body>
+
+    <div id="theme1">
+
+        <!-- <textarea class="wish-text" name="" id="wishes">पतंग उड़ाएं और बांटे,तिल और गुड़ का प्रसाद। मकर संक्रांति का त्योहार,करे सबका जीवन खुशहाल।
+            </textarea><br> -->
+        <input type="text" id="name" class="name" placeholder="Your name">
+
+    </div>
+    <div id="action-btn">
+        <button class="share-btn" id="next-btn">Next</button>
+    </div>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gifshot/0.3.2/gifshot.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('#next-btn').click(() => {
+                let name = $('#name').val();
+                $('#theme1').html(`<h3 class="name-output">${name}</h3>`);
+                $('#action-btn').html(`<button class="share-btn" onclick="shareCard()">Share</button>`)
+            })
+
+        })
+
+        async function shareCard() {
+            try {
+                const themeDiv = document.getElementById('theme1');
+                const canvas = await html2canvas(themeDiv);
+                const dataUrl = canvas.toDataURL('image/gif');
+
+                const blob = await (await fetch(dataUrl)).blob();
+                const filesArray = [
+                    new File([blob], 'theme-snapshot.png', {
+                        type: blob.type,
+                    })
+                ];
+
+                await navigator.share({
+                    title: 'Greeting Card Theme',
+                    text: 'Check out this amazing greeting card theme!',
+                    files: filesArray,
+                });
+                console.log('Content shared successfully');
+            } catch (error) {
+                console.error('Error sharing content:', error);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

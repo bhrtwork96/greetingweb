@@ -1,26 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create and share beautiful greeting cards with your loved ones.">
     <title>Greeting Card Creating and Sharing</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+    
     <div class="container">
-        <div class="intro">
+        
+        <header class="intro">
             <!-- <h1>Create and share beautiful greeting cards with your loved ones.</h1> -->
-            <p></p>
             <h1>अपने प्रियजनों के साथ सुंदर ग्रीटिंग कार्ड बनाएं और साझा करें।</h1>
-            <p></p>
-        </div>
-        <a href="thems.html" class="button">ग्रीटिंग कार्ड बनाएं</a>
-
-        <img src="assets/images/greeing.png" alt="Greeting Card" class="image">
-
+        </header>
+        <main style="display: flex;flex-direction: column; justify-content: center; align-items: center;">
+            <p style="font-weight: bold;">हमारी वेबसाइट पर आपका स्वागत है! यहाँ आप अपने प्रियजनों के लिए सुंदर और व्यक्तिगत ग्रीटिंग कार्ड बना सकते हैं और उन्हें आसानी से साझा कर सकते हैं।</p>
+            <a href="thems.html" class="button">ग्रीटिंग कार्ड बनाएं</a>
+            <ul style="text-align: left; font-weight: bold;">
+                <li>1. बटन पर क्लिक करें</li>
+                 <li>2. थीम चुनें</li>
+                 <li> 3. अपना नाम या ब्रांड नाम लिखें</li>
+                 <li>4. शेयर पर क्लिक करें और किसी के साथ साझा करें</li>
+            </ul>
+            <div class="header">
+                <div class="share-icon" id="shareButton">
+                    <i class="bi bi-share"></i>
+                </div>
+            </div>
+            <img src="assets/images/greeing.png" alt="Beautiful Greeting Card" class="image">
+        </main>
     </div>
+    <script>
+        document.getElementById('shareButton').addEventListener('click', async () => {
+            try {
+                await navigator.share({
+                    title: 'Greeting Card Theme',
+                    text: 'Check out this amazing greeting card theme!',
+                    url: window.location.href,
+                });
+                console.log('Content shared successfully');
+            } catch (error) {
+                console.error('Error sharing content:', error);
+            }
+        });
+    </script>
 </body>
 
 </html>
